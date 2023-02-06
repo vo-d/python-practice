@@ -12,22 +12,28 @@ def factorial(n):
         return result
 
 
+def term(k):
+    return 1 / factorial(k)
+
+
+def terms(k):
+    for k in range(1_000):
+        yield term(k)
+
 
 def estimate_euler():
     """Computes an estimate of e.
     
     """
+    SUM = 0
 
     epsilon = sys.float_info.epsilon
-    total = 0
-    k = 0
-    e = 1
-    while True:
-        total += (e**k)/(factorial(k))
-
-        if abs(total) < 1e-15:
+    for term in terms:
+        if term < epsilon:
             break
-        k += 1
-    return total**(1/e)
+        sum += term
+        if abs(SUM) < epsilon:
+            break
+    return SUM
 
 print(estimate_euler())
