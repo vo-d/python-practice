@@ -10,7 +10,6 @@ def are_triangles(arr):
     # Calculate the sum of each row
     row_sum = np.sum(arr, axis=1)
 
-
     """ Check if the sum of any two columns is greater 
     than the third column """
     result = (row_sum - arr[:, 0] > arr[:, 0]) & \
